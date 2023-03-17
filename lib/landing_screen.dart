@@ -45,14 +45,14 @@ class _LandingPageState extends State<LandingPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '¿Qué es On Your Table?',
+                    '¿Qué es Waitty?',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w800,
                         ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    'On Your Table es una plataforma que te digitalizar tu restaurante, mejorar la atención de tu restaurante y mejorar la experiencia gastronomica de tus comensales.',
+                  const Text(
+                    'Waitty es una plataforma que te permite digitalizar tu restaurante, mejorar la atención y la experiencia gastronomica de tus comensales.',
                   ),
                 ],
               ),
@@ -66,22 +66,40 @@ class _LandingPageState extends State<LandingPage> {
                     children: [
                       Text(
                         'Crea tu menu digital',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w800,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                ),
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
+                      const SizedBox(
                         width: 400,
                         child: Text(
                           'Por medio de codigos QR o links inteligentes tus comensales pueden acceder a tu menu digital personalizable, ordenar, pagar sus cuentas, interactuar con la mesa y tus meseros en tiempo real.',
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
-                        width: 400,
-                        child: Text(
-                          'Lo mejor: tus comensales no tienen que descargar alguna aplicación todo desde una pagina web que hacemos por ti.',
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 400),
+                        child: RichText(
+                          text: const TextSpan(
+                            text: 'Lo mejor: ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              TextSpan(
+                                text:
+                                    'tus comensales no tienen que descargar alguna aplicación, solo tienen que ingresar a la pagina web que hacemos por ti! 😃',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -101,15 +119,18 @@ class _LandingPageState extends State<LandingPage> {
                     children: [
                       Text(
                         'Mejora la atención de tu restaurante',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w800,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                ),
+                        textAlign: TextAlign.justify,
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
+                      const SizedBox(
                         width: 400,
                         child: Text(
-                          'Con la aplicación de mesero mejoras la atención de tu restaurante ya que tus meseros saben que mesa necesita su ayuda, pueden ver las ordenes de tus comensales, ver el estado de las mesas, ordenar por tus comensales, ver la cola de ordenes listas para llevar a la mesa de tu comensal y todo en tiempo real.',
+                          'Con la aplicación de mesero mejoras la atención de tu restaurante ya que indicamos que mesa necesita ayuda, pueden ver las ordenes de tus comensales, ver el estado de las mesas, ver la cola de ordenes listas para llevar a la mesa, ordenar por tus comensales y todo en tiempo real.',
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
@@ -126,15 +147,18 @@ class _LandingPageState extends State<LandingPage> {
                     children: [
                       Text(
                         'Administra tu restaurante desde cualquier lugar',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w800,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.w800,
+                                ),
+                        textAlign: TextAlign.justify,
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
+                      const SizedBox(
                         width: 400,
                         child: Text(
-                          'Con la aplicación de administrador podras administrar tu restaurante, generar codigos QR, administrar tus mesas, modificar tu menu, ver metricas y datos de tu restaurante en tiempo real.',
+                          'Con la aplicación de administrador podras administrar tu restaurante, generar codigos QR, manejar tus mesas, modificar tu menu, ver datos de tu restaurante en tiempo real.',
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
@@ -155,8 +179,9 @@ class _LandingPageState extends State<LandingPage> {
                         ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    'Uniendote a la lista de espera tendras un año gratuito y luego un 20% de descuento de por vida!',
+                  const Text(
+                    'Uniendote a la lista de espera podras tener un año gratuito y luego un 20% de descuento de por vida!',
+                    textAlign: TextAlign.justify,
                   ),
                   const SizedBox(height: 20),
                   Row(
@@ -172,13 +197,13 @@ class _LandingPageState extends State<LandingPage> {
                       const SizedBox(width: 10),
                       FilledButton(
                         onPressed: () {},
-                        child: Text('Unirme'),
+                        child: const Text('Unirme'),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    'Recibirás un correo electrónico para unirte a On Your Table lo mas pronto posible.',
+                  const Text(
+                    'Recibirás un correo electrónico para unirte a Waitty lo mas pronto posible.',
                   ),
                   const SizedBox(height: 10),
                 ],
@@ -201,13 +226,13 @@ class SectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _sectionPadding = EdgeInsets.symmetric(
+    final sectionPadding = EdgeInsets.symmetric(
       vertical: 20,
       horizontal: MediaQuery.of(context).size.width * 0.05 + 10,
     );
     return Container(
       width: double.infinity,
-      padding: _sectionPadding,
+      padding: sectionPadding,
       margin: _sectionMargin,
       decoration: BoxDecoration(color: withBackground ? _sectionColor : null),
       child: child,
@@ -216,7 +241,11 @@ class SectionWidget extends StatelessWidget {
 }
 
 class IntroSection extends StatelessWidget {
-  const IntroSection({required this.containerSize, super.key, required this.onJoin});
+  const IntroSection({
+    required this.containerSize,
+    super.key,
+    required this.onJoin,
+  });
 
   final double containerSize;
   final VoidCallback onJoin;
@@ -261,56 +290,50 @@ class IntroSection extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Icon(Icons.restaurant, color: Colors.deepOrange),
-                        const SizedBox(width: 10),
-                        Text(
-                          'On Your Table',
-                          style: TextStyle(
-                            color: Colors.deepOrange,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textHeightBehavior: TextHeightBehavior(
-                            applyHeightToFirstAscent: false,
-                            applyHeightToLastDescent: false,
-                          ),
-                        ),
-                      ],
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset('assets/logo.png', height: 90),
                     ),
                     const Spacer(),
                     Text(
                       'Tu restaurante',
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
                     ),
                     DefaultTextStyle(
-                      style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                              ),
                       child: AnimatedTextKit(
                         totalRepeatCount: 1,
                         pause: const Duration(seconds: 2),
-                        animatedTexts: [TyperAnimatedText('al siguiente nivel...')],
+                        animatedTexts: [
+                          TyperAnimatedText('al siguiente nivel...')
+                        ],
                       ),
                     ),
                     const SizedBox(height: 10),
                     Container(
-                      constraints: BoxConstraints(maxWidth: 300),
+                      constraints: const BoxConstraints(maxWidth: 300),
                       child: Text(
                         '!Digitaliza tu restaurante con nuestra suite de aplicaciones!',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
                             ?.copyWith(color: Colors.grey[600]),
+                        textAlign: TextAlign.justify,
                       ),
                     ),
                     const SizedBox(height: 10),
-                    FilledButton(onPressed: onJoin, child: Text('Unirme')),
+                    FilledButton(
+                      onPressed: onJoin,
+                      child: const Text('Unirme'),
+                    ),
                     const Spacer(),
                   ],
                 ),
