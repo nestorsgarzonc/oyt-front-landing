@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/services.dart';
@@ -192,11 +194,13 @@ class _LandingPageState extends State<LandingPage> {
                         child: CustomTextField(
                           controller: _textController,
                           label: 'Correo electrónico',
+                          onFieldSubmitted: (_) => _onJoin(),
+                          keyboardType: TextInputType.emailAddress,
                         ),
                       ),
                       const SizedBox(width: 10, height: 10),
                       FilledButton(
-                        onPressed: () {},
+                        onPressed: _onJoin,
                         child: const Text('Unirme'),
                       ),
                     ],
@@ -213,6 +217,42 @@ class _LandingPageState extends State<LandingPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _onJoin() async {
+    try {
+      if (_textController.text.isEmpty) {
+        return;
+      }
+      showDialog(
+        context: context,
+        builder: (context) => const Center(child: CircularProgressIndicator()),
+      );
+      final email = _textController.text;
+      _textController.clear();
+      const endpoint = 'https://oyt-backend.herokuapp.com/api/client';
+      final body = jsonEncode({'email': email});
+      final headers = {
+        'Content-Type': 'application/json',
+      };
+      final response = await http.post(
+        Uri.parse(endpoint),
+        headers: headers,
+        body: body,
+      );
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        throw Exception('Error al unirse a la lista de espera');
+      }
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('¡Te has unido a la lista de espera!')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    } finally {
+      Navigator.of(context).pop();
+    }
   }
 }
 
