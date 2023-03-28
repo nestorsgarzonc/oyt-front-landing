@@ -52,7 +52,7 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Waitty es una plataforma que te permite digitalizar tu restaurante, mejorar la atención y la experiencia gastronomica de tus comensales.',
+                    'Waitty es una plataforma que te permite digitalizar tu restaurante, mejorar la atención y la experiencia gastronómica de tus comensales.',
                   ),
                 ],
               ),
@@ -64,7 +64,7 @@ class _LandingPageState extends State<LandingPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Crea tu menu digital',
+                        'Crea tu menú digital',
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.w800,
@@ -74,7 +74,7 @@ class _LandingPageState extends State<LandingPage> {
                       const SizedBox(
                         width: 400,
                         child: Text(
-                          'Por medio de codigos QR o links inteligentes tus comensales pueden acceder a tu menu digital personalizable, ordenar, pagar sus cuentas, interactuar con la mesa y tus meseros en tiempo real.',
+                          'Por medio de códigos QR o links inteligentes tus comensales pueden acceder a tu menú digital personalizable, ordenar, pagar sus cuentas e interactuar con la mesa y tus meseros en tiempo real.',
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -91,7 +91,7 @@ class _LandingPageState extends State<LandingPage> {
                             children: [
                               TextSpan(
                                 text:
-                                    'tus comensales no tienen que descargar alguna aplicación, solo tienen que ingresar a la pagina web que hacemos por ti! 😃',
+                                    'tus comensales no tienen que descargar ninguna aplicación ¡Solo tienen que ingresar a la página web que hacemos por ti! 😃',
                                 style: TextStyle(
                                   fontWeight: FontWeight.normal,
                                   color: Colors.black,
@@ -127,7 +127,7 @@ class _LandingPageState extends State<LandingPage> {
                       const SizedBox(
                         width: 400,
                         child: Text(
-                          'Con la aplicación de mesero mejoras la atención de tu restaurante ya que indicamos que mesa necesita ayuda, pueden ver las ordenes de tus comensales, ver el estado de las mesas, ver la cola de ordenes listas para llevar a la mesa, ordenar por tus comensales y todo en tiempo real.',
+                          'Con la aplicación de mesero mejoras la atención de tu restaurante, ya que indicamos cuál mesa necesita ayuda, mostramos las órdenes de tus comensales, el estado de las mesas, la cola de órdenes listas para llevar a la mesa y agregar productos que se les hayan olvidado a tus clientes ¡Y todo esto en tiempo real!',
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -154,7 +154,7 @@ class _LandingPageState extends State<LandingPage> {
                       const SizedBox(
                         width: 400,
                         child: Text(
-                          'Con la aplicación de administrador podras administrar tu restaurante, generar codigos QR, manejar tus mesas, modificar tu menu, ver datos de tu restaurante en tiempo real.',
+                          'Con la aplicación de administrador podrás administrar tu restaurante, generar códigos QR, manejar tus mesas, modificar tu menú y ver datos de tu restaurante en tiempo real.',
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -180,7 +180,7 @@ class _LandingPageState extends State<LandingPage> {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Uniendote a la lista de espera podras tener un año gratuito y luego un 20% de descuento de por vida!',
+                    '¡Uniéndote a esta lista podrás tener un año gratuito y luego un 20% de descuento de por vida!',
                     textAlign: TextAlign.justify,
                   ),
                   const SizedBox(height: 20),
@@ -234,7 +234,11 @@ class ResponsiveFlex extends StatelessWidget {
       direction: isMobile ? Axis.vertical : Axis.horizontal,
       verticalDirection: verticalDirection ??
           (isMobile ? VerticalDirection.up : VerticalDirection.down),
-      children: children,
+      children: children
+          .expand(
+            (e) => [e, const SizedBox(width: 10, height: 10)],
+          )
+          .toList(),
     );
   }
 }
@@ -344,7 +348,7 @@ class IntroSection extends StatelessWidget {
                     Container(
                       constraints: const BoxConstraints(maxWidth: 300),
                       child: Text(
-                        '!Digitaliza tu restaurante con nuestra suite de aplicaciones!',
+                        '¡Digitaliza tu restaurante con nuestra suite de aplicaciones!',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
