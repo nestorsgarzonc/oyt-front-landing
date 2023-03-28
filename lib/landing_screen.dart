@@ -58,8 +58,7 @@ class _LandingPageState extends State<LandingPage> {
               ),
             ),
             SectionWidget(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: ResponsiveFlex(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,8 +109,7 @@ class _LandingPageState extends State<LandingPage> {
             ),
             SectionWidget(
               withBackground: false,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: ResponsiveFlex(
                 children: [
                   Image.asset('assets/weaiter.png', height: 280),
                   Column(
@@ -139,8 +137,7 @@ class _LandingPageState extends State<LandingPage> {
               ),
             ),
             SectionWidget(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: ResponsiveFlex(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,7 +160,10 @@ class _LandingPageState extends State<LandingPage> {
                       ),
                     ],
                   ),
-                  Flexible(child: Image.asset('assets/admin.png', height: 280))
+                  Image.asset(
+                    'assets/admin.png',
+                    width: 280,
+                  )
                 ],
               ),
             ),
@@ -184,8 +184,8 @@ class _LandingPageState extends State<LandingPage> {
                     textAlign: TextAlign.justify,
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  ResponsiveFlex(
+                    verticalDirection: VerticalDirection.down,
                     children: [
                       SizedBox(
                         width: 500,
@@ -194,7 +194,7 @@ class _LandingPageState extends State<LandingPage> {
                           label: 'Correo electrónico',
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 10, height: 10),
                       FilledButton(
                         onPressed: () {},
                         child: const Text('Unirme'),
@@ -212,6 +212,29 @@ class _LandingPageState extends State<LandingPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ResponsiveFlex extends StatelessWidget {
+  const ResponsiveFlex({
+    super.key,
+    required this.children,
+    this.verticalDirection,
+  });
+
+  final List<Widget> children;
+  final VerticalDirection? verticalDirection;
+
+  @override
+  Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 800;
+    return Flex(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      direction: isMobile ? Axis.vertical : Axis.horizontal,
+      verticalDirection: verticalDirection ??
+          (isMobile ? VerticalDirection.up : VerticalDirection.down),
+      children: children,
     );
   }
 }
@@ -337,7 +360,8 @@ class IntroSection extends StatelessWidget {
                     const Spacer(),
                   ],
                 ),
-                Flexible(child: Image.asset('assets/dinner.png')),
+                if (MediaQuery.of(context).size.width > 650)
+                  Flexible(child: Image.asset('assets/dinner.png')),
               ],
             ),
           ),
