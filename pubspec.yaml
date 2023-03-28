@@ -9,18 +9,12 @@ environment:
   sdk: ">=2.19.3 <3.0.0"
 
 dependencies:
+  animated_text_kit: ^4.2.2
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  oyt_front_auth:
-    path: ./packages/oyt_front_auth
-  oyt_front_core:
-    path: ./packages/oyt_front_core
-  oyt_front_product:
-    path: ./packages/oyt_front_product
-  oyt_front_table:
-    path: ./packages/oyt_front_table
-  oyt_front_widgets:
-    path: ./packages/oyt_front_widgets
+  flutter_riverpod: ^2.3.2
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
